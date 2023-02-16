@@ -1,0 +1,48 @@
+{% load  static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Speak English</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'semantic-ui/semantic.min.css' %}">
+	<style>
+		.definition {
+			margin-left: 2%;
+		}
+		audio {
+			text-align: center;
+		}
+		.pronun {
+			margin-left: 2%;
+		}
+	</style>
+	<body>
+		<div class="ui header segment">
+			<div class="ui container">
+				<h2 class="ui header"><b>Speak English ||| Created by: <a href="t.me/xazratbek">Xazratbek</a></b></h2>
+				<div class="ui divider"></div>
+				<p><b>With this site you can find definitions and audio files of any english words</b></p>
+			</div>
+		</div>
+		<div class="ui container">
+			<div class="ui placeholder segment">
+				<div class="inline" style="width:88%;">
+					<div class="ui massive form search">
+						<form method = "GET" action = "/" class="ui icon input" style="width:100%">
+							<input name = "q" value="{{ result.word_id }}" class="prompt"  type="text" placeholder="Enter word...">
+							<i class="search link icon"></i>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="ui stacked segment">
+				<h3 class="definition"><b>Definitions 👇<br><b>{{ result.definitions  }}</b></b></h3>
+				<h3 class="pronun">Pronunciation 👇<br></h3>
+				<audio controls> <source src="{{ result.audio }}" type="audio/ogg">Your browser does not support the audio tag.</audio>
+				</div>
+			</div>
+		</body>
+		</html>
